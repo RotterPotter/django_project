@@ -1,5 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    {% for quote in quotes %}
+        <h3>
+            <a href="/authors/{{quote.author.name}}/"> 
+                {{quote.author}}
+            </a>
+        </h3>
+        <p>{{quote.text}}</p>
+        <p>-------------------------</p>
+    {% endfor %}
 
 {% endblock %}

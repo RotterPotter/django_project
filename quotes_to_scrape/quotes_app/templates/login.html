@@ -1,26 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
     <form action="/login/" method="post" accept-charset="utf-8">{% csrf_token %}
-        <p>{{ form.errors.name }}</p>
-        <div class="row">
-
-        <div class="form-group col-xs-3">
-            <label for="name">Username</label>
-            {{form.name}}
-        </div>
-
-        </div>  
-        
-        <div class="row">
-
-            
-            <div class="form-group col-xs-3">
-                <label for="email">Email address</label>
-                {{form.email}}
-            </div>
-
-        </div>
-
-        <input type="submit" value='login' class="btn btn-primary">
+        <h2>Login</h2>
+        {{form.as_p}}
+        <input type="submit" value='Login' class="btn btn-primary">
+        <p>
+            Don't have an account?
+            <a href='/register/'>Sing up</a>
+        </p>
     </form>
 {% endblock %}
