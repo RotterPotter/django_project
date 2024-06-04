@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from .forms import RegisterForm, LoginForm, Author_Form, Quote_Form
+from .forms import RegisterForm, LoginForm, Author_Form, Quote_Form, Reset_Form
 from django.shortcuts import render
 from django.contrib import messages
 from django.contrib.auth import authenticate, logout, login
@@ -9,9 +9,14 @@ from django.contrib.auth.decorators import login_required
 
 def home(request):
     quotes = list()
-    for quote in Quote.objects.all():
-        quotes.append({'author': quote.author, 'text': quote.text})
+    try:
+        quote_objects = Quote.objects.all()
 
+        for quote in quote_objects:
+            quotes.append({'author': quote.author, 'text': quote.text})
+    except:
+        return render(request, 'index.html', {'quotes': quotes})
+    
     return render(request, 'index.html', {'quotes': quotes})
 
 def sign_up(request):
@@ -29,6 +34,7 @@ def sign_up(request):
             
             username = request.POST['username']
             password = request.POST['password1']
+            # email = request.POST['email']
             user = authenticate(username=username, password=password)
 
             login(request, user)
@@ -85,3 +91,14 @@ def new_quote(request):
 
     return render(request, 'new_quote.html', {'form': Quote_Form()})
 
+def reset_password(request):
+    if request.method == 'GET':
+        return render(request, 'sign_up.html', {'form': Reset_Form()})
+    
+    if request.method == 'POST':
+        user_email = request.POST['email']
+        send_reset_email(user_email)
+        return HttpResponseRedirect('/login/')
+
+def send_reset_email(email:str):
+    pass

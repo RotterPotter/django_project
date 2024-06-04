@@ -4,7 +4,6 @@ version = "0.1.0"
 description = "My first django project"
 authors = ["RotterPotter <kivilele@gmail.com>"]
 license = "MIT"
-readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
@@ -13,6 +12,7 @@ psycopg2-binary = "^2.9.9"
 faker = "^24.9.0"
 bs4 = "^0.0.2"
 mongoengine = "^0.28.2"
+django-environ = "^0.11.2"
 
 
 [build-system]

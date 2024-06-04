@@ -37,3 +37,6 @@ class Quote_Form(ModelForm):
             'text',
             'author'
         ]
+
+class Reset_Form(Form):
+    email = CharField()

@@ -11,5 +11,6 @@ urlpatterns = [
     path('new_author/', views.new_author, name='new_author'),
     path('new_quote/', views.new_quote, name='new_quote'),
     path('authors/', views.authors, name='authors'),
+    path('reset_password/', views.reset_password, name='reset_password')
     
 ]
