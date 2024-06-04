@@ -1,0 +1,3 @@
+.env/
+.venv/
+/quotes_to_scrape/quotes_to_scrape/__pycache__
